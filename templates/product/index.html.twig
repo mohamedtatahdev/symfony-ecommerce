@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte
+{% endblock %}
+
+{% block body %}
+
+	<div class="container my-5">
+		<div class="row">
+			<div class="col-md-6">
+				<img src="/uploads/{{product.picture}}" class="img-fluid" alt="{{ product.name }}">
+			</div>
+			<div class="col-md-6">
+            <small><i><a href="{{ path ('category', { slug : product.category.slug})}}">{{product.category.name}}</a> > {{product.name}}</i></small>
+				<h1>{{ product.name}}</h1>
+				<span class="d-block mb-3">{{product.pricewt|price}}</span>
+				{{product.description|raw}}{# enleve les balise html generer par textEditor dans l'admin#}
+				<a href="{{ path ('cart_add', { id : product.id }) }}" class="btn btn-success w-100 mt-3">Ajouter au panier</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}
